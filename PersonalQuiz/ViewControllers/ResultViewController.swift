@@ -12,37 +12,51 @@ class ResultViewController: UIViewController {
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var definitionLabel: UILabel!
     
-    var answersFromQuestions: [Answer] = []
+    var answers: [Answer]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-       sorted()
+               sorted()
     }
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true)
     }
     
-    private func sorted() { //здесь функция выполняет 2 действия, не знаю как разделить
-       
-        var sortedAnswers = Set<String>()
+    private func sorted() { //здесь функция выполняет 3 действия, не знаю как разделить
         
-        for answer in answersFromQuestions {
+        var sortedAnswers = [String]()
+        
+        for answer in answers {
             if answer.type == .dog {
-                sortedAnswers.insert(String(answer.type.rawValue))
+                sortedAnswers.append(String(answer.type.rawValue))
             } else if answer.type == .cat {
-                sortedAnswers.insert((String(answer.type.rawValue)))
+                sortedAnswers.append((String(answer.type.rawValue)))
             } else if answer.type == .rabbit {
-                sortedAnswers.insert((String(answer.type.rawValue)))
+                sortedAnswers.append((String(answer.type.rawValue)))
             } else if answer.type == .turtle {
-                sortedAnswers.insert((String(answer.type.rawValue)))
+                sortedAnswers.append((String(answer.type.rawValue)))
             }
-            print(sortedAnswers)
+            
+        }
+        var oneAnimal = [String]()
+        var fewAnimal = [String]()
+        
+        for answer in sortedAnswers {
+            if oneAnimal.contains(answer) {
+                fewAnimal.append(answer)
+            } else {
+                oneAnimal.append(answer)
+            }
         }
         
-        emojiLabel.text = sortedAnswers.randomElement()
-        
+        if fewAnimal.isEmpty {
+            emojiLabel.text = oneAnimal.randomElement()
+        } else {
+            emojiLabel.text = fewAnimal.randomElement()
+        }
+  
         if emojiLabel.text == String(AnimalType.cat.rawValue) {
             definitionLabel.text = AnimalType.cat.definition
         } else if emojiLabel.text == String(AnimalType.turtle.rawValue) {
@@ -52,6 +66,7 @@ class ResultViewController: UIViewController {
         } else if emojiLabel.text == String(AnimalType.dog.rawValue) {
             definitionLabel.text = AnimalType.dog.definition
         }
-       
     }
 }
+
+
