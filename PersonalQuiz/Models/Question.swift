@@ -80,9 +80,4 @@ extension Question {
     }
 }
 
-//[PersonalQuiz.Answer(title: "Морковь", type: PersonalQuiz.AnimalType.rabbit),
-//PersonalQuiz.Answer(title: "Плавать", type: PersonalQuiz.AnimalType.dog),
-//PersonalQuiz.Answer(title: "Спать", type: PersonalQuiz.AnimalType.cat),
-//PersonalQuiz.Answer(title: "Обниматься", type: PersonalQuiz.AnimalType.rabbit),
-//PersonalQuiz.Answer(title: "Есть", type: PersonalQuiz.AnimalType.turtle),
-//PersonalQuiz.Answer(title: "Не заамечаю", type: PersonalQuiz.AnimalType.turtle)]
+

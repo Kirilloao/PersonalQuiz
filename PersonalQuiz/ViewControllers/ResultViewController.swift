@@ -17,12 +17,11 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        sorted()
+       sorted()
     }
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true)
-        
     }
     
     private func sorted() { //здесь функция выполняет 2 действия, не знаю как разделить
@@ -41,6 +40,7 @@ class ResultViewController: UIViewController {
             }
             print(sortedAnswers)
         }
+        
         emojiLabel.text = sortedAnswers.randomElement()
         
         if emojiLabel.text == String(AnimalType.cat.rawValue) {
